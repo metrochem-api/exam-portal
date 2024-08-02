@@ -1,0 +1,45 @@
+<div class="shadow-s border p-4">
+  <h1 class="text-xl font-semi-bold">{{ editUserId ? 'Update User' : 'Add User' }}</h1>
+    <form action="" [formGroup]="userForm">
+      <div class="d-flex flex-wrap">
+        <mat-form-field class="w-100">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input type="text" matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Age</mat-label>
+          <input type="number" matInput formControlName="age" >
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Address</mat-label>
+          <input type="text" matInput formControlName="address">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+      </div>
+      <div class="justify-content-center d-flex">
+
+<!--
+        @if(editUserId){
+          <button mat-raised-button color="primary" (click)="updateUser()">Update</button>
+        }@else {
+          <button mat-raised-button color="primary" (click)="addUser()">Add</button>
+        } -->
+
+        <div *ngIf="editUserId; else loggedOut">
+          <button mat-raised-button color="primary" (click)="updateUser()">Update</button>
+        </div>
+
+        <ng-template #loggedOut>
+          <button mat-raised-button color="primary" (click)="addUser()">Add</button>
+        </ng-template>
+
+      </div>
+    </form>
+</div>
